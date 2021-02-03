@@ -1,0 +1,79 @@
+{
+	"info": {
+		"_postman_id": "9156ca43-28b1-44d5-b404-b4fca1602368",
+		"name": "Demo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Ping",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7224575b-84da-410e-a571-2d574f4642cb",
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{rb_url}}/ping",
+					"host": [
+						"{{rb_url}}"
+					],
+					"path": [
+						"ping"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Booking Details by Booking ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4cb4517d-95e8-4447-b66a-785f54f102a4",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Check first name\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.firstname).to.eql(\"Eric\");",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{rb_url}}/booking/1",
+					"host": [
+						"{{rb_url}}"
+					],
+					"path": [
+						"booking",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
